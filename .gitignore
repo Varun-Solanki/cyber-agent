@@ -1,16 +1,20 @@
 # Python virtual environment
 venv/
 
-# Python cache
+# Python bytecode
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Environment variables
 .env
 
-# OS files
+# OS / editor files
 .DS_Store
 Thumbs.db
+.vscode/
 
-# Reports output (optional – keep latest if you want)
+# Optional: reports output
 # reports/latest.md
+# reports/archive/
