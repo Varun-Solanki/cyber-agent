@@ -1,0 +1,65 @@
+ReconAgent:
+  role: Cyber Threat Recon Specialist
+  responsibility:
+    - Collect raw threat intelligence
+    - Normalize heterogeneous sources
+  inputs:
+    - NVD CVE feeds
+    - Security RSS feeds
+    - GitHub PoC repositories
+  outputs:
+    - UnifiedThreat objects
+  tools:
+    - fetch_recent_cves
+    - fetch_security_rss
+    - search_github_pocs
+
+
+ClassificationAgent:
+  role: Threat Classification Specialist
+  responsibility:
+    - Assign high-level threat categories
+  inputs:
+    - UnifiedThreat
+  outputs:
+    - EnrichedThreat (category assigned)
+  logic:
+    - Deterministic rule-based classification
+
+
+SeverityAgent:
+  role: Risk Assessment Analyst
+  responsibility:
+    - Compute operational severity
+  inputs:
+    - EnrichedThreat
+  outputs:
+    - EnrichedThreat (severity assigned)
+  logic:
+    - CVSS + exploit + freshness scoring
+
+
+DecisionAgent:
+  role: Threat Decision Authority
+  responsibility:
+    - Correlate multi-source intelligence
+    - Deduplicate threats
+    - Assign decisions and priority
+  inputs:
+    - EnrichedThreat list
+  outputs:
+    - Final prioritized threats
+  logic:
+    - Deterministic decision rules
+
+
+ReportingAgent:
+  role: Intelligence Reporting Officer
+  responsibility:
+    - Generate human-readable reports
+    - Archive historical intelligence
+  inputs:
+    - Final threats
+  outputs:
+    - Markdown report
+    - Archived reports

@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\Varun\\OneDrive\\Desktop\\autonomous-threat-intel\\venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": ["."],
+  "python.analysis.typeCheckingMode": "basic"
+}

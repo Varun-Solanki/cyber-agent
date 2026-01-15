@@ -1,0 +1,53 @@
+ReconTask:
+  description: >
+    Perform initial reconnaissance to gather raw cyber threat data
+    from public intelligence sources.
+  expected_output: >
+    Structured JSON containing recent CVEs, security news entries,
+    and public GitHub exploit repositories.
+  agent: ReconAgent
+  phase: Phase 1 - Reconnaissance
+
+
+ClassificationTask:
+  description: >
+    Analyze normalized threats and assign high-level threat categories
+    using deterministic, rule-based logic.
+  expected_output: >
+    Enriched threats annotated with a threat category
+    such as RCE, PRIV_ESC, DOS, or UNKNOWN.
+  agent: ClassificationAgent
+  phase: Phase 2 - Threat Understanding
+
+
+SeverityScoringTask:
+  description: >
+    Compute operational severity scores for classified threats,
+    taking into account exploit availability, impact, and freshness.
+  expected_output: >
+    Enriched threats with severity scores (0.0–10.0),
+    severity levels, and human-readable rationale.
+  agent: SeverityAgent
+  phase: Phase 2 - Threat Understanding
+
+
+CorrelationAndDecisionTask:
+  description: >
+    Correlate threats across multiple intelligence sources,
+    deduplicate overlapping issues, and assign operational decisions.
+  expected_output: >
+    Deduplicated and prioritized threats annotated with decisions
+    such as ESCALATE, TRACK, or IGNORE.
+  agent: DecisionAgent
+  phase: Phase 3 - Decision & Prioritization
+
+
+ReportingTask:
+  description: >
+    Generate a human-readable threat intelligence report
+    and archive historical reports for auditability.
+  expected_output: >
+    Markdown report summarizing escalated, tracked, and suppressed
+    threats, along with execution metadata.
+  agent: ReportingAgent
+  phase: Phase 4 - Reporting
